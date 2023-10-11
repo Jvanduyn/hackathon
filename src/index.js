@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 import App from './App';
 import { faker } from '@faker-js/faker';
-import { options } from './routes/api';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,9 +11,7 @@ root.render(
   </React.StrictMode>
 );
 
-const { faker } = require('@faker-js/faker');
-
-export function createRandomUser(): User {
+export function createRandomUser() {
   return {
     username: faker.internet.userName(),
     password: faker.internet.password(),

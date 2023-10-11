@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User, Employee } = require('../models/User');
+const { User } = require('../models/User');
 
 router.get('/user', async (req, res) => {
     try {
@@ -13,7 +13,7 @@ router.get('/user', async (req, res) => {
 
 router.get('/employees', async (req, res) => {
     try {
-        const employees = await Employee.find({});
+        const employees = await User.find({});
         res.json(employees);
     } catch (error) {
         res.status(500).json({ error: 'Error getting employee data' });
