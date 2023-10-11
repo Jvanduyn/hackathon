@@ -1,6 +1,7 @@
 import Login from './Pages/Login'
 import Directory from './Pages/Directory'
 import Details from './Pages/Details'
+import { Route, Routes, Navigate, Link } from 'react-router-dom';
 
 export default () => {
 
