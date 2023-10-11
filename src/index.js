@@ -22,3 +22,7 @@ export function createRandomUser() {
     salary: faker.finance.amount(45000, 200000, 2, '$')
   }
 };
+
+export const Users = faker.helpers.multiple(createRandomUser, {
+  count: 1000,
+});
