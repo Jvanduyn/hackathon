@@ -1,5 +1,23 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const { User, Employee } = require('../models/User');
 
-const {
-    getUserData
-} = require('../../controllers/matchup-controller');
+router.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Error getting user data' });
+    }
+});
+
+router.get('/employees', async (req, res) => {
+    try {
+        const employees = await Employee.find({});
+        res.json(employees);
+    } catch (error) {
+        res.status(500).json({ error: 'Error getting employee data' });
+    }
+});
+
+module.exports = router;
