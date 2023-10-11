@@ -12,17 +12,22 @@ root.render(
 );
 
 export function createRandomUser() {
+  let isHR = Math.random() > 0.9;
+  let first = faker.person.firstName();
+  let last = faker.person.lastName();
+  
   return {
-    username: faker.internet.userName(),
     password: faker.internet.password(),
-    name: faker.person.fullName(),
-    role: faker.person.jobTitle(),
+    name: first + ' ' + last,
+    role: isHR ? 'HR' : faker.person.jobTitle(),
     phone: faker.phone.number(),
     location: faker.location.state(),
-    salary: faker.finance.amount(45000, 200000, 2, '$')
+    salary: faker.finance.amount(45000, 200000, 2, '$'),
+    email: faker.internet.email({firstName: first, lastName: last}),
   }
 };
 
 export const Users = faker.helpers.multiple(createRandomUser, {
   count: 1000,
 });
+console.log(Users);
