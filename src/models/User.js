@@ -31,14 +31,11 @@ const employeeSchema = new mongoose.Schema({
     },
     Salary: {
         type: Number,
-        required: true,
-    },
-    ReportsTo: {
-        type: String,
-        required: false,
+        required: true
     }
 })
 
 const User = mongoose.model('User', userSchema);
+const Employee = mongoos.model('Employee', employeeSchema)
 
-module.exports = User; 
+module.exports = { User, Employee }; 
