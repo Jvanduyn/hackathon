@@ -31,8 +31,12 @@ const employeeSchema = new mongoose.Schema({
     },
     Salary: {
         type: Number,
-        required: true
-    }
+        required: true,
+    },
+    ReportsTo: {
+        type: String,
+        required: false,
+    },
 })
 
 const User = mongoose.model('User', userSchema);
