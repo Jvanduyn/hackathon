@@ -32,6 +32,10 @@ const employeeSchema = new mongoose.Schema({
     Salary: {
         type: Number,
         required: true,
+    },
+    ReportsTo: {
+        type: String,
+        required: false,
     }
 })
 
