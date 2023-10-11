@@ -3,7 +3,7 @@
 import React from 'react';
 import { Users } from '..';
 
-const EmployeeDetails = () => {
+const EmployeeDetails = (/* Users */) => {
     return (
         <div>
             <h2>Employee Details</h2>
