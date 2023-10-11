@@ -12,6 +12,29 @@ const userSchema = new mongoose.Schema({
     },
 });
 
+const employeeSchema = new mongoose.Schema({
+    Name: {
+        type: String,
+        required: true,
+    },
+    PhoneNumber: {
+        type: String,
+        required: true,
+    },
+    Role: {
+        type: String,
+        required: true,
+    },
+    Location: {
+        type: String,
+        required: true,
+    },
+    Salary: {
+        type: Number,
+        required: true,
+    }
+})
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User; 
