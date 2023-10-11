@@ -10,9 +10,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-});
-
-const employeeSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: true,
@@ -37,9 +34,9 @@ const employeeSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-})
+});
+
 
 const User = mongoose.model('User', userSchema);
-const Employee = mongoose.model('Employee', employeeSchema)
 
 module.exports = { User, Employee }; 
