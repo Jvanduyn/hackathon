@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors')
 const app = express();
+
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/database', {
   useNewUrlParser: true,

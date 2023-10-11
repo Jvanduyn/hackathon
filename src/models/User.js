@@ -10,27 +10,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Name: {
+    name: {
         type: String,
         required: true,
     },
-    PhoneNumber: {
+    phoneNumber: {
         type: String,
         required: true,
     },
-    Role: {
+    role: {
         type: String,
         required: true,
     },
-    Location: {
+    location: {
         type: String,
         required: true,
     },
-    Salary: {
+    salary: {
         type: Number,
         required: true,
     },
-    ReportsTo: {
+    reportsTo: {
         type: String,
         required: false,
     },
