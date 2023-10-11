@@ -40,6 +40,6 @@ const employeeSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('User', userSchema);
-const Employee = mongoos.model('Employee', employeeSchema)
+const Employee = mongoose.model('Employee', employeeSchema)
 
 module.exports = { User, Employee }; 
