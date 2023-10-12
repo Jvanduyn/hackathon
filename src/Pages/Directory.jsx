@@ -32,7 +32,7 @@ const EmployeeDirectory = ({ users }) => {
                 <button onClick={handlePredict}>Salary Prediction</button>
             </div>
             <div>
-                <p>${prediction}</p>
+                <p>{prediction ? '$' + prediction : ''}</p>
             </div>
             <h2>Employee Directory</h2>
             <ul>
