@@ -49,7 +49,20 @@ module.exports.call = async function call(operation, parameters, callback) {
             break;
 
         case 'findEmp':
-            const emp = await collection.findOne({role: {$nin: ['Manager', 'HR']}});
+            const emp = await collection.findOne({
+                $and: [
+                  {
+                    role: {
+                      $nin: ['Manager', 'HR']
+                    },
+                  },
+                  {
+                    name: {
+                      $regex: /^A/i // This regex matches names starting with 'A' case-insensitively
+                    },
+                  }
+                ]
+              });
             callback({ emp: emp });
             break;
 
