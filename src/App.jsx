@@ -13,7 +13,7 @@ export default () => {
         fetch('http://localhost:3001/api/employees')
             .then((res) => res.json())
             .then((data) => {
-                setUsers(data);
+                setUsers(data.sort((a, b) => a.name.localeCompare(b.name)));
             });
     }, []);
 

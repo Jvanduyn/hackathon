@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const EmployeeDirectory = ({ users }) => {
-    const fiftyEmployees = users.slice(0, 50);
+    const [visibleUsers, setVisibleUsers] = useState(50);
     const [inputText, setInputText] = useState('');
     const [prediction, setPrediction] = useState('');
     const navigate = useNavigate();
 
+    const handleLoadMore = () => {
+        setVisibleUsers((prevVisibleUsers) => prevVisibleUsers + 50);
+    };
     const handleLogout = () => {
         localStorage.removeItem('directoryUser');
         navigate('/login');
@@ -36,12 +39,15 @@ const EmployeeDirectory = ({ users }) => {
             </div>
             <h2>Employee Directory</h2>
             <ul>
-                {fiftyEmployees.map((employee, index) => (
+                {users.slice(0, visibleUsers).map((employee, index) => (
                     <li key={index}>
                         <Link to={`/details?i=${index}`}>{employee.name}</Link>
                     </li>
                 ))}
             </ul>
+            {visibleUsers < users.length && (
+                <button onClick={handleLoadMore}>Load More</button>
+            )}
         </div>
     );
 };

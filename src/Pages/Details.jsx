@@ -9,7 +9,6 @@ const EmployeeDetails = ({ users }) => {
     const canSee = (myObj.role === 'HR') || 
                    (myObj.email === userInfo.manager) || 
                    (myObj.email === userInfo.email);
-    console.log(canSee)
     return (
         <div>
             <h2>Employee Details</h2>
