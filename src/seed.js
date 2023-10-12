@@ -49,7 +49,7 @@ function createRandomUser() {
     let first = faker.person.firstName();
     let last = faker.person.lastName();
     let jobs = {
-        'Developer':1.5, 'Designer':1, 'Facilitator':0.8, 'Director':1.5, 'Representative':0.7,
+        'Developer':1.5, 'HR':1.2, 'Designer':1, 'Facilitator':0.8, 'Director':1.5, 'Representative':0.7,
         'Technician':0.7, 'Assistant':0.5, 'Consultant':0.85, 'Executive':1.7, 'Associate':1.3, 'Architect':1.1,
         'Specialist':0.9, 'Engineer':1.1, 'Producer':0.85, 'Liaison':1.1, 'Analyst':1.1, 'Supervisor':1.1,
         'Officer':1.6, 'Strategist':1.12, 'HR':1.1, 'Orchestrator':0.9, 'Planner':0.6, 'Agent':0.7, 'Manager':1.1,
@@ -58,10 +58,10 @@ function createRandomUser() {
     return {
         password: faker.internet.password(),
         name: first + ' ' + last,
-        role: isHR ? 'HR' : jobs.keys[faker.number.int(jobs.length)],
+        role: isHR ? 'HR' : job,
         phone: faker.phone.number(),
         location: faker.location.state(),
-        salary: parseFloat(faker.finance.amount(45000, 200000, 2)),
+        salary: 100000 * jobs[job],
         email: faker.internet.email({ firstName: first, lastName: last }),
         manager: managers[faker.number.int(4)].email,
     }
