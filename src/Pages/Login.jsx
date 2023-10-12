@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from 'react-router-dom';
+import '../App.css';
 
 export default (props) => {
     const [email, setEmail] = useState('');
@@ -69,30 +70,32 @@ export default (props) => {
         <div>
             {isLoggedIn ? (
                 <div>
-                    <Navigate to="/directory"/>
+                    <Navigate to="/directory" />
                 </div>
             ) : (
-                <form onSubmit={handleLogin}>
-                    <div>
-                        <label>Email:</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>password:</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit">Login</button>
-                </form>
+                <div className="login-container">
+                    <form onSubmit={handleLogin} className="login-form">
+                        <div className="input-field">
+                            <label>Email:</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className="input-field">
+                            <label>password:</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="login-button">Login</button>
+                    </form>
+                </div>
             )}
         </div>
     );
