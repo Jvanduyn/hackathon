@@ -65,17 +65,11 @@ export default (props) => {
         return fetch(`http://localhost:3001/api/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
     };
 
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        localStorage.removeItem('directoryUser');
-    };
-
     return (
         <div>
             {isLoggedIn ? (
                 <div>
-                    <button onClick={handleLogout}>Logout</button>
-                    <Navigate to="/directory" />
+                    <Navigate to="/directory"/>
                 </div>
             ) : (
                 <form onSubmit={handleLogin}>
