@@ -2,32 +2,42 @@
 
 import React from 'react';
 
-const EmployeeDetails = (Users) => {
-    const index =  new URLSearchParams(window.location.search).get('i');
+const EmployeeDetails = ({ users }) => {
+    const index = new URLSearchParams(window.location.search).get('i');
+    const userInfo = users[index];
+    const myObj = JSON.parse(localStorage.getItem('directoryUser'));
+    const canSee = (myObj.role === 'HR') || 
+                   (myObj.email === userInfo.manager) || 
+                   (myObj.email === userInfo.email);
+    console.log(canSee)
     return (
         <div>
             <h2>Employee Details</h2>
             <div>
-                <h3>Name:</h3> {Users[index].name}
+                <h3>Name:</h3> {userInfo.name}
             </div>
             <div>
-                <h3>Role:</h3> {Users[index].role}
+                <h3>Role:</h3> {userInfo.role}
             </div>
             <div>
-                <h3>Phone Number:</h3> {Users[index].phone}
+                <h3>Phone Number:</h3> {userInfo.phone}
             </div>
             <div>
-                <h3>Location:</h3> {Users[index].location}
+                <h3>Location:</h3> {userInfo.location}
             </div>
             <div>
-                <h3>Email:</h3> {Users[index].email}
+                <h3>Email:</h3> {userInfo.email}
             </div>
             <div>
-                <h3>Manager:</h3> {Users[index].manager}
+                <h3>Manager:</h3> {userInfo.manager}
             </div>
-            <div>
-                <h3>Salary:</h3> {Users[index].salary}
-            </div>
+            {canSee ? (
+                <div>
+                    <h3>Salary:</h3> {userInfo.salary}
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     );
 };

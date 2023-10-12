@@ -21,6 +21,14 @@ const db = client.db(dbName);
 // set the collection to use
 const collection = db.collection(collectionName);
 
+
+// Photos: 
+// https://randomuser.me/api/portraits/<gender>/<id>.jpg
+// where gender is “men” or “women”
+// and  id is between 1 and 99
+
+
+
 const numManagers = 5;
 const managers = [];
 for (let x = 0; x < numManagers; x++) {

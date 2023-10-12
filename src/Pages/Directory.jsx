@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const EmployeeDirectory = () => {
-  const [users, setUsers] = useState([]);
+const EmployeeDirectory = ({ users }) => {
   const fiftyEmployees = users.slice(0, 50);
   const navigate = useNavigate();
 
@@ -11,15 +10,6 @@ const EmployeeDirectory = () => {
     navigate('/login');
   };
 
-  // Load user data on mount
-  useEffect(() => {
-    fetch('http://localhost:3001/api/employees')
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      });
-  }, []);
-
   return (
     <div>
       <button onClick={handleLogout}>Logout</button>
@@ -27,6 +17,7 @@ const EmployeeDirectory = () => {
       <ul>
         {fiftyEmployees.map((employee, index) => (
           <li key={index}>
+            {/* <Navigate to={`/details?i=${index}`} Users={users}>{employee.name} </Navigate> */}
             <Link to={`/details?i=${index}`}>{employee.name}</Link>
           </li>
         ))}
