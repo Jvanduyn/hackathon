@@ -4,14 +4,13 @@ const { MongoClient } = require('mongodb');
 // DB Connection URL
 var url = "mongodb://localhost:27017";
 
-// Create client
-const client = new MongoClient(url);
-
 // Database and collection variables
 const dbName = "database";
 const collectionName = "users"
 
 module.exports.call = async function call(operation, parameters, callback) {
+    // Create client
+    const client = new MongoClient(url);
     // connect to the db server
     await client.connect();
 
