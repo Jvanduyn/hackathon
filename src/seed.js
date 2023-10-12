@@ -1,5 +1,25 @@
 const { faker } = require('@faker-js/faker');
-const { User } = require('./models/User');
+const mongoose = require('mongoose');
+
+// mongodb client driver
+const { MongoClient } = require('mongodb');
+
+// DB Connection URL
+var url = "mongodb://localhost:27017";
+
+// Create client
+const client = new MongoClient(url);
+
+// Database and collection variables
+const dbName = "database";
+const collectionName = "users"
+// connect to the db server
+client.connect();
+
+// set the database to use
+const db = client.db(dbName);
+// set the collection to use
+const collection = db.collection(collectionName);
 
 const numManagers = 5;
 const managers = [];
@@ -42,13 +62,15 @@ Users.push(...managers);
 // Clear and insert new data
 const clearAndInsertUsers = async (usersData) => {
     try {
-      await User.deleteMany({});
+      await collection.deleteMany({});
       console.log('Deleted existing users.');
   
-      const users = await User.insertMany(usersData);
+      const users = await collection.insertMany(usersData);
       console.log('Users inserted successfully:', users);
+      client.close();
     } catch (error) {
       console.error('Error:', error);
+      client.close();
     }
   };
 
