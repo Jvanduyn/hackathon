@@ -47,6 +47,12 @@ module.exports.call = async function call(operation, parameters, callback) {
             const man = await collection.findOne({ role: 'Manager' });
             callback({ man: man });
             break;
+
+        case 'findEmp':
+            const emp = await collection.findOne({role: {$nin: ['Manager', 'HR']}});
+            callback({ emp: emp });
+            break;
+
         default:
             break;
     }

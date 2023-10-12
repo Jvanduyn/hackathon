@@ -41,7 +41,6 @@ export default (props) => {
                 } else {
                     setIsLoggedIn(false);
                 }
-                // setIsLoggedIn(true); // for testing only!!!
             })
             .catch((error) => {
                 console.error('API Error:', error);
