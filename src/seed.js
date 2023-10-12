@@ -40,7 +40,7 @@ for (let x = 0; x < numManagers; x++) {
         role: 'Manager',
         phone: faker.phone.number(),
         location: faker.location.state(),
-        salary: parseFloat(faker.finance.amount(45000, 200000, 2)),
+        salary: parseInt(faker.finance.amount(120000, 150000, 0)),
         email: faker.internet.email({ firstName: first, lastName: last }),
     }
 }
@@ -54,14 +54,15 @@ function createRandomUser() {
         'Specialist':0.9, 'Engineer':1.1, 'Producer':0.85, 'Liaison':1.1, 'Analyst':1.1, 'Supervisor':1.1,
         'Officer':1.6, 'Strategist':1.12, 'HR':1.1, 'Orchestrator':0.9, 'Planner':0.6, 'Agent':0.7, 'Manager':1.1,
         'Administrator':0.95, 'Coordinator':0.65}
-    let job = Object.keys(jobs)[Math.floor(math.random()*jobs.length)]
+        let job = isHR ? 'HR' : Object.keys(jobs)[Math.floor(Math.random()*Object.keys(jobs).length)]
+        let salary = Math.floor(100000 * jobs[job] + Math.floor(Math.random()*25000));
     return {
         password: faker.internet.password(),
         name: first + ' ' + last,
-        role: isHR ? 'HR' : job,
+        role: job,
         phone: faker.phone.number(),
         location: faker.location.state(),
-        salary: 100000 * jobs[job],
+        salary: salary,
         email: faker.internet.email({ firstName: first, lastName: last }),
         manager: managers[faker.number.int(4)].email,
     }

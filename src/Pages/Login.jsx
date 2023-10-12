@@ -2,31 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from 'react-router-dom';
 import '../App.css';
 
-export default (props) => {
+export default () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
-
-        // Jake S:
-        //HR:
-        // "Henderson67@yahoo.com"
-        // "r6toOP7OQPs7mKy"
-
-        //Manager:
-        // "Tierra6@yahoo.com"
-        // "Im8JeAMzvvXZVO1"
-
-        // Jake V:
-        //HR:
-        // "Henderson67@yahoo.com"
-        // "r6toOP7OQPs7mKy"
-
-        //Manager:
-        // "Tierra6@yahoo.com"
-        // "Im8JeAMzvvXZVO1"
 
         // API call to check the credentials
         checkCreds(email, password)

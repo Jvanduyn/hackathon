@@ -1,6 +1,10 @@
 //page that houses just the details of the individual employee that is selected from the array of employees
 
 import React from 'react';
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
 
 const EmployeeDetails = ({ users }) => {
     const index = new URLSearchParams(window.location.search).get('i');
@@ -32,7 +36,7 @@ const EmployeeDetails = ({ users }) => {
             </div>
             {canSee ? (
                 <div>
-                    <h3>Salary:</h3> {userInfo.salary}
+                    <h3>Salary:</h3> {formatter.format(userInfo.salary)}
                 </div>
             ) : (
                 <></>

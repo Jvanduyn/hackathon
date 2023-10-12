@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 const EmployeeDirectory = ({ users }) => {
     const [visibleUsers, setVisibleUsers] = useState(50);
     const [inputText, setInputText] = useState('');
@@ -35,7 +40,7 @@ const EmployeeDirectory = ({ users }) => {
                 <button onClick={handlePredict}>Salary Prediction</button>
             </div>
             <div>
-                <p>{prediction ? '$' + prediction : ''}</p>
+                <p>{prediction ? formatter.format(prediction) : ''}</p>
             </div>
             <h2>Employee Directory</h2>
             <ul>
