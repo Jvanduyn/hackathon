@@ -15,6 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "seed": "node ./src/seed.js",
     "start": "react-scripts start",
     "serve": "nodemon ./src/server.js",
     "build": "react-scripts build",

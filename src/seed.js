@@ -1,4 +1,5 @@
-import { faker } from '@faker-js/faker';
+const { faker } = require('@faker-js/faker');
+const { User } = require('./models/User');
 
 const numManagers = 5;
 const managers = [];
@@ -11,7 +12,7 @@ for (let x = 0; x < numManagers; x++) {
         role: 'Manager',
         phone: faker.phone.number(),
         location: faker.location.state(),
-        salary: faker.finance.amount(45000, 200000, 2, '$'),
+        salary: parseFloat(faker.finance.amount(45000, 200000, 2)),
         email: faker.internet.email({ firstName: first, lastName: last }),
     }
 }
@@ -26,14 +27,30 @@ function createRandomUser() {
         role: isHR ? 'HR' : faker.person.jobTitle(),
         phone: faker.phone.number(),
         location: faker.location.state(),
-        salary: faker.finance.amount(45000, 200000, 2, '$'),
+        salary: parseFloat(faker.finance.amount(45000, 200000, 2)),
         email: faker.internet.email({ firstName: first, lastName: last }),
         manager: managers[faker.number.int(4)].email,
     }
 };
 
-export const Users = faker.helpers.multiple(createRandomUser, {
+const Users = faker.helpers.multiple(createRandomUser, {
     count: 1000,
 });
 Users.push(...managers);
-console.log(Users);
+// console.log(Users);
+
+// Clear and insert new data
+const clearAndInsertUsers = async (usersData) => {
+    try {
+      await User.deleteMany({});
+      console.log('Deleted existing users.');
+  
+      const users = await User.insertMany(usersData);
+      console.log('Users inserted successfully:', users);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  
+  clearAndInsertUsers(Users);
