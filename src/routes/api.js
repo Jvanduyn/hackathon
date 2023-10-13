@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const { PythonShell } = require('python-shell');
 const { call } = require('../dbController');
 
 router.get('/login', async (req, res) => {
@@ -38,6 +40,36 @@ const findEmp = () => {
         });
     });
 };
+
+router.get('/getPrediction', (req, res) => {
+    const role = req.query.role;
+  
+    const options = {
+        scriptPath:  path.join(__dirname, '../predict'),
+        pythonPath: path.join(__dirname, '../..', 'venv', 'Scripts', 'python.exe'),
+        args: [role],
+    };
+  
+    const pyshell = new PythonShell('./predict.py', options);
+  
+    let prediction = null;
+  
+    pyshell.on('message', (message) => {
+      prediction = parseInt(message);
+    });
+  
+    pyshell.on('error', (err) => {
+      res.status(500).send({ error: err });
+    });
+  
+    pyshell.end((err) => {
+      if (err) {
+        res.status(500).send({ error: err });
+      } else {
+        res.json({ prediction });
+      }
+    });
+  });
 
 router.get('/logininfo', async (req, res) => {
     try {
