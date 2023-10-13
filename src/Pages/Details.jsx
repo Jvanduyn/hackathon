@@ -14,8 +14,8 @@ const EmployeeDetails = ({ users }) => {
                    (myObj.email === userInfo.manager) || 
                    (myObj.email === userInfo.email);
     return (
-        <div>
-            <h2>Employee Details</h2>
+        <div className='details-container'>
+            <h2 style={{textAlign: 'center'}} >Employee Details</h2>
             <div>
                 <h3>Name:</h3> {userInfo.name}
             </div>
