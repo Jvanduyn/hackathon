@@ -10,12 +10,21 @@ const EmployeeDetails = ({ users }) => {
     const index = new URLSearchParams(window.location.search).get('i');
     const userInfo = users[index];
     const myObj = JSON.parse(localStorage.getItem('directoryUser'));
-    const canSee = (myObj.role === 'HR') || 
-                   (myObj.email === userInfo.manager) || 
-                   (myObj.email === userInfo.email);
+    const canSee = (myObj.role === 'HR') ||
+        (myObj.email === userInfo.manager) ||
+        (myObj.email === userInfo.email);
+
+    const genders = ['men', 'women'];
+    const randomGender = genders[Math.floor(Math.random() * genders.length)];
+    const randomID = Math.floor(index % 100);
+
+    const myPhoto = `https://randomuser.me/api/portraits/${randomGender}/${randomID}.jpg`;
+    
     return (
         <div className='details-container'>
-            <h2 style={{textAlign: 'center'}} >Employee Details</h2>
+            <h2 style={{ textAlign: 'center' }} >Employee Details</h2>
+            <img src={myPhoto} alt="User" style={{ width: '150px', height: '150px', display: 'block', margin: 'auto', marginBottom: '10px' }} />
+
             <div>
                 <h3>Name:</h3> {userInfo.name}
             </div>

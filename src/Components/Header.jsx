@@ -67,7 +67,7 @@ const Header = ({ }) => {
             });
     };
     return (
-        <div style={{ background: '#999b9d', width: '100vw', padding: '10px' }}>
+        <div style={{ background: '#999b9d', width: '100vw', padding: '10px', position: 'absolute', top: '0px', left: '0px' }}>
             <button className='button-logout' style={{ position: 'absolute', top: '10px', left: '10px' }} onClick={handleLogout}>Logout</button>
             <div>
                 <h4 style={{ color: '#ffffff', textAlign: 'center', marginBottom: '10px' }}>Enter a role to get the predicted salary:</h4>
@@ -82,14 +82,20 @@ const Header = ({ }) => {
                     <button className='load-prediction' onClick={handlePredict}>Predict Salary</button>
                 </div>
                 <div>
-                    {predictionLoading ? (
-                        <p>Loading...</p>
+                    {predictionText ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            {predictionLoading ? (
+                                <p style={{ margin: '0px', marginTop: '5px'  }}>Loading...</p>
+                            ) : (
+                                <p style={{ margin: '0px', marginTop: '5px' }}>{predictionResult}</p>
+                            )}
+                        </div>
                     ) : (
-                        <p>{predictionResult}</p>
+                        <></>
                     )}
                 </div>
             </div>
-        </div>
+        </div >
 
     );
 }

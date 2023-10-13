@@ -77,7 +77,8 @@ body {
   align-items: center;
   text-align: center;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 140px;
+  margin-bottom: 20px;
 }
 
 .details-container {
@@ -91,7 +92,8 @@ body {
   flex-direction: column;
   text-align: left;
   padding: 5px 20px 20px 20px;
-  margin-top: 10px;
+  margin-top: 140px;
+  margin-bottom: 20px;
 }
 
 .details-container div {
