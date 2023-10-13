@@ -46,7 +46,6 @@ router.get('/getPrediction', (req, res) => {
   
     const options = {
         scriptPath:  path.join(__dirname, '../predict'),
-        pythonPath: path.join(__dirname, '../..', 'venv', 'Scripts', 'python.exe'),
         args: [role],
     };
   
