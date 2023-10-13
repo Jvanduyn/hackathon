@@ -67,23 +67,27 @@ const Header = ({ }) => {
             });
     };
     return (
-        <div>
-            <button onClick={handleLogout}>Logout</button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
+            <button style={{ position: 'absolute', top: '10px', left: '10px' }} onClick={handleLogout}>Logout</button>
             <div>
-                <input
-                    type="text"
-                    value={predictionText}
-                    onChange={(e) => setPredictionText(e.target.value)}
-                    placeholder="Enter role"
-                />
-                <button onClick={handlePredict}>Salary Prediction</button>
-            </div>
-            <div>
-                {predictionLoading ? (
-                    <p>Loading...</p>
-                ) : (
-                    <p>{predictionResult}</p>
-                )}
+                <p style={{ textAlign: 'center', marginBottom: '10px' }}>Enter a role to get the predicted salary:</p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <input
+                        type="text"
+                        value={predictionText}
+                        onChange={(e) => setPredictionText(e.target.value)}
+                        placeholder="Enter role"
+                        style={{ marginRight: '10px' }}
+                    />
+                    <button onClick={handlePredict}>Predict Salary</button>
+                </div>
+                <div>
+                    {predictionLoading ? (
+                        <p>Loading...</p>
+                    ) : (
+                        <p>{predictionResult}</p>
+                    )}
+                </div>
             </div>
         </div>
     );
