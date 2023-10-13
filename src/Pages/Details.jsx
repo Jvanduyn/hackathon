@@ -15,8 +15,8 @@ const EmployeeDetails = ({ users }) => {
         (myObj.email === userInfo.email);
 
     const genders = ['men', 'women'];
-    const randomGender = genders[Math.floor(Math.random() * genders.length)];
     const randomID = Math.floor(index % 100);
+    const randomGender = genders[randomID % 2 === 0 ? 0 : 1];
 
     const myPhoto = `https://randomuser.me/api/portraits/${randomGender}/${randomID}.jpg`;
     

@@ -10,34 +10,14 @@ export default (props) => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // Jake S:
-        //HR:
-        // "Henderson67@yahoo.com"
-        // "r6toOP7OQPs7mKy"
-
-        //Manager:
-        // "Tierra6@yahoo.com"
-        // "Im8JeAMzvvXZVO1"
-
-        // Jake V:
-        //HR:
-        // "Henderson67@yahoo.com"
-        // "r6toOP7OQPs7mKy"
-
-        //Manager:
-        // "Tierra6@yahoo.com"
-        // "Im8JeAMzvvXZVO1"
-
         // API call to check the credentials
         checkCreds(email, password)
             .then((res) => res.json())
             .then((data) => {
-                console.log('Data: ', data);
                 if (data) {
                     setIsLoggedIn(true);
                     // Save the credentials to localStorage
                     localStorage.setItem('directoryUser', JSON.stringify(data));
-                    console.log(JSON.parse(localStorage.getItem('directoryUser')));
                 } else {
                     setIsLoggedIn(false);
                 }
