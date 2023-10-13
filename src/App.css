@@ -60,3 +60,41 @@ body {
 .login-button:hover {
   background-color: #FF0000;
 }
+
+.directory-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.load-more-button {
+  background-color: #E61616;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.load-more-button:hover {
+  background-color: #FF0000;
+  /* Slightly darker shade on hover */
+}

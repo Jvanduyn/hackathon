@@ -34,7 +34,7 @@ const EmployeeDirectory = ({ users }) => {
     );
 
     return (
-        <div>
+        <div className='directory-container'>
             <h2>Employee Directory</h2>
             <input
                 type="text"
@@ -44,11 +44,11 @@ const EmployeeDirectory = ({ users }) => {
             />
             <ul>
                 {filteredUsers.slice(0, visibleUsers).map((employee, index) => (
-                    <UserTile key={index} employee={employee} users={users}/>
+                    <UserTile key={index} employee={employee} users={users} />
                 ))}
             </ul>
             {visibleUsers < filteredUsers.length && (
-                <button onClick={handleLoadMore}>Load More</button>
+                <button onClick={handleLoadMore} className="load-more-button">Load More</button>
             )}
         </div>
     );
