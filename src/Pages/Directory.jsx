@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -14,6 +14,32 @@ const EmployeeDirectory = ({ users }) => {
     const [predictionResult, setPredictionResult] = useState('');
     const navigate = useNavigate();
 
+    // Load field values from localStorage on component mount
+    useEffect(() => {
+        const storedInputText = localStorage.getItem('inputText');
+        const storedPredictionText = localStorage.getItem('predictionText');
+        const storedPredictionResult = localStorage.getItem('predictionResult');
+
+        if (storedInputText) {
+            setInputText(storedInputText);
+        }
+
+        if (storedPredictionText) {
+            setPredictionText(storedPredictionText);
+        }
+
+        if (storedPredictionResult) {
+            setPredictionResult(storedPredictionResult);
+        }
+    }, []);
+
+    // Save field values to localStorage on input change
+    useEffect(() => {
+        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('predictionText', predictionText);
+        localStorage.setItem('predictionResult', predictionResult);
+    }, [inputText, predictionText, predictionResult]);
+
     const handleLoadMore = () => {
         setVisibleUsers((prevVisibleUsers) => prevVisibleUsers + 50);
     };
@@ -26,10 +52,8 @@ const EmployeeDirectory = ({ users }) => {
     const handlePredict = () => {
         if (!predictionText) {
             setPredictionResult('');
-            return
+            return;
         }
-
-        //console.log('Predicting salary for:', predictionText);
 
         // Set loading state to true
         setPredictionLoading(true);
@@ -71,9 +95,9 @@ const EmployeeDirectory = ({ users }) => {
             </div>
             <div>
                 {predictionLoading ? (
-                    <p>Loading...</p> 
+                    <p>Loading...</p>
                 ) : (
-                    <p>{predictionResult}</p> 
+                    <p>{predictionResult}</p>
                 )}
             </div>
             <h2>Employee Directory</h2>
