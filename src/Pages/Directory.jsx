@@ -46,6 +46,9 @@ const EmployeeDirectory = ({ users }) => {
 
     const handleLogout = () => {
         localStorage.removeItem('directoryUser');
+        localStorage.removeItem('inputText');
+        localStorage.removeItem('predictionText');
+        localStorage.removeItem('predictionResult');
         navigate('/login');
     };
 
