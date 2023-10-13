@@ -2,13 +2,31 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from 'react-router-dom';
 import '../App.css';
 
-export default () => {
+export default (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
+
+        // Jake S:
+        //HR:
+        // "Henderson67@yahoo.com"
+        // "r6toOP7OQPs7mKy"
+
+        //Manager:
+        // "Tierra6@yahoo.com"
+        // "Im8JeAMzvvXZVO1"
+
+        // Jake V:
+        //HR:
+        // "Henderson67@yahoo.com"
+        // "r6toOP7OQPs7mKy"
+
+        //Manager:
+        // "Tierra6@yahoo.com"
+        // "Im8JeAMzvvXZVO1"
 
         // API call to check the credentials
         checkCreds(email, password)
@@ -23,6 +41,7 @@ export default () => {
                 } else {
                     setIsLoggedIn(false);
                 }
+                // setIsLoggedIn(true); // for testing only!!!
             })
             .catch((error) => {
                 console.error('API Error:', error);
@@ -56,6 +75,7 @@ export default () => {
             ) : (
                 <div className="login-container">
                     <form onSubmit={handleLogin} className="login-form">
+                        <h1>Login</h1>
                         <div className="input-field">
                             <label>Email:</label>
                             <input
@@ -66,7 +86,7 @@ export default () => {
                             />
                         </div>
                         <div className="input-field">
-                            <label>password:</label>
+                            <label>Password:</label>
                             <input
                                 type="password"
                                 value={password}
