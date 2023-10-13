@@ -57,7 +57,7 @@ export default (props) => {
                     <form onSubmit={handleLogin} className="login-form">
                         <h1>Login</h1>
                         <div className="input-field">
-                            <label>Email:</label>
+                            <label>Email:  </label>
                             <input
                                 type="email"
                                 value={email}
@@ -66,7 +66,7 @@ export default (props) => {
                             />
                         </div>
                         <div className="input-field">
-                            <label>Password:</label>
+                            <label>Password:  </label>
                             <input
                                 type="password"
                                 value={password}
